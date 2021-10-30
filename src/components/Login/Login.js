@@ -1,7 +1,15 @@
 import React from 'react';
+import useFirebase from '../../hooks/useFirebase';
 
 const Login = () => {
-  return <div>Login</div>;
+  const { SignInUsingGoogle, user } = useFirebase();
+  console.log(user);
+  return (
+    <div>
+      <h2>Login</h2>
+      <button onClick={SignInUsingGoogle}>Google Sign in</button>
+    </div>
+  );
 };
 
 export default Login;
