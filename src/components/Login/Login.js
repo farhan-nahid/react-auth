@@ -1,8 +1,8 @@
 import React from 'react';
-import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-  const { SignInUsingGoogle, SignInUsingGitHub } = useFirebase();
+  const { SignInUsingGoogle, SignInUsingGitHub } = useAuth();
   return (
     <div className='all__center'>
       <h2>Login</h2>

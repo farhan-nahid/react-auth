@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
 import './Header.css';
 
 const Header = () => {
-  const { user, signOutUser } = useFirebase();
+  const { user, signOutUser } = useAuth();
   return (
     <nav>
       <NavLink to='/home'>Home</NavLink>
@@ -19,6 +19,7 @@ const Header = () => {
           <button onClick={signOutUser}>Sign Out</button>
         </>
       )}
+      <NavLink to='/shipping'>Shipping</NavLink>
     </nav>
   );
 };
