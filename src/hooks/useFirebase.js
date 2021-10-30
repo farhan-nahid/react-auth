@@ -1,5 +1,6 @@
 import {
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
@@ -23,6 +24,10 @@ const useFirebase = () => {
   }, [auth]);
 
   const googleProvider = new GoogleAuthProvider();
+  const gitHubProvider = new GithubAuthProvider();
+
+  // google auth
+
   const SignInUsingGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -33,12 +38,26 @@ const useFirebase = () => {
       });
   };
 
+  // gitHub auth
+
+  const SignInUsingGitHub = () => {
+    signInWithPopup(auth, gitHubProvider)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
+  // sign out auth
+
   const signOutUser = () => {
     signOut(auth).then(() => {
       setUser(null);
     });
   };
-  return { user, error, SignInUsingGoogle, signOutUser };
+  return { user, error, SignInUsingGoogle, signOutUser, SignInUsingGitHub };
 };
 
 export default useFirebase;
